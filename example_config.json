@@ -3,7 +3,7 @@
 		"repo": "getting-started",
 		"file_dest": ".github/workflows/amplify.yml",
 		"action": "amplify.yml",
-		"commit_message": "install.amplify.security - adding Amplify secure pipeline action",
+		"commit_message": "install.amplify.security/adding Amplify secure pipeline action",
 		"branch": "optional-branch-name"
 	}
 ]

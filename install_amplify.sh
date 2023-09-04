@@ -1,10 +1,53 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# MIT License
+#
+# Copyright (c) 2023 Amplify Security
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+system=$(uname -s)
 
 # Check if 'jq' is installed
-if ! command -v jq &> /dev/null; then
+if [ -z "$(command -v jq)" ]; then
     echo "'jq' is required but not installed."
-    echo "Please install 'jq' using the following command:"
-    echo "brew install jq"
+    if [ "$system" == "Darwin" ]; then
+      echo "Please install 'jq' using the following command:"
+      echo "brew install jq"
+    elif [ "$system" == "Linux" ]; then
+      if [ -x "$(command -v apt)" ]; then
+        echo "Please install 'jq' using the following command:"
+        echo "sudo apt install jq"
+      elif [ -x "$(command -v apt-get)" ]; then
+        echo "Please install 'jq' using the following command:"
+        echo "sudo apt-get install jq"
+      elif [ -x "$(command -v apk)" ]; then
+        echo "Please install 'jq' using the following command:"
+        echo "sudo apk add jq"
+      elif [ -x "$(command -v dnf)" ]; then
+        echo "Please install 'jq' using the following command:"
+        echo "sudo dnf install jq"
+      elif [ -x "$(command -v zypper)" ]; then
+        echo "Please install 'jq' using the following command:"
+        echo "sudo zypper install jq"
+      fi
+    fi
     exit 1
 fi
 
