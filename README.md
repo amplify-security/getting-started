@@ -2,7 +2,7 @@
 This repo includes scripts and associated resources to help install Amplify Security. 
 Amplify Security installs into your project repo as a two step
 process. First, access to the repo should be given
-to the Amplify Security GitHub App. This is usually done when
+to the [Amplify Security GitHub App](https://github.com/apps/amplify-security). This is usually done when
 you install the GitHub App into your organization or user. Second,
 the Amplify Secure Pipeline GitHub Action must be configured
 in the repo. This is done by committing the amplify.yml file contained in this 
@@ -10,10 +10,10 @@ repo to `.github/workflows/amplify.yml`. This repo also contains an install scri
 automates the second part of the installation process for multiple repos at a time.
 
 ## Using the Install Script
-The install script install_amplify.sh automates committing the GitHub Action to 
+The install script [`install_amplify.sh`](https://github.com/amplify-security/getting-started/blob/-/install_amplify.sh) automates committing the GitHub Action to 
 multiple repos at a time. The script relies on a configuration file, `config.json`, to know
 which repos it should install the Amplify Secure Pipeline GitHub Action into.
-An example configuration file is provided at `example_config.json`. You may manually
+An example configuration file is provided at [`example_config.json`](https://github.com/amplify-security/getting-started/blob/-/example_config.json). You may manually
 configure the script if you like, but the recommended way to use the script is to have
 the Amplify Security Platform generate a dynamically configured install package.
 This can be done from the Projects page of our application.
